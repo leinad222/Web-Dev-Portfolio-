@@ -1,61 +1,84 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Standing Desks Website</title> 
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/1d36c0aa30.js" crossorigin="anonymous"></script>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="styles.css"/>
+     <title>Portfolio Updated</title>
+
 </head>
 <body>
-    <div class="header">
-        <img src="imagefolder/risingdesks.png" alt="logo" height="500" width="300">
-        <h4>Quality standing desks for everyone </h4>
-    </div>
-    <div class="navbar">
-        <a href="contacts.html">Contacts</a>
-        <a href="risingdesks.html">Products</a>
-        <a href="basket.html">Basket</a>
-        <a href="healthbenefits.html">Health Benefits</a>
-        <div class="dropdown">
-          <button class="dropbtn">Dropdown
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-content">
-            <a href="contacts.html">contact</a>
-            <a href="healthbenefits.html">Preview of our Products</a>
-            <a href="basket.html">Products</a>
-          </div>
+<!--NAVBAR-->
+    <nav>
+    <div class="nav-container">
+      <a href="/" class="logo">Daniel Pace</a>
+      <div class="nav-links">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-github"></i> Github
+        </a>
+        <a href="https://www.linkedin.com/in/daniel-pace-8b0b1a1b2/" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="mailto:danpace1999@gmail.com" target="_blank" rel="noopener noreferrer">
+          <i class="fa-solid fa-envelope"></i> danpace1999@gmail.com
+        </a>
         </div>
-      </div>
-    <br>
-    <section>
-        <h5>Contact us for more Information</h5>
-        <p>Orders, Enquiries, Deliveries, Replacements</p>
-    </section>
-    <br>
-    <section>
-        <h5>Rising Desks Products</h5>
-        <p>Inspire, Tool Box, Trustle, WorkBench, Executive, Ladder, Treadmill</p>
-    </section>
-    <br>
-    <section>
-        <h5>Click on the Health Benefits page</h5>
-        <p>Eases back, hip, and leg discomfort</p>
-    </section>
-    <br>
-    <section>
-        <h5>Add to Cart</h5>
-        <p>We have handpicked a wide variety of items that carry the same low prices. Every day.</p>
-    </section>
-        <br>
-        <br>
-    <div class="footer">
-        <h2>Social Media Links</h2>
-        <i class="fa-brands fa-facebook"></i>
-        <i class="fa-brands fa-youtube"></i>
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-instagram"></i>
     </div>
+    </nav>
+
+
+     <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-text">
+      <h2>Hi, I'm Daniel</h2>
+      <p>A passionate web developer focused on building accessible and modern web experiences.</p>
+    </div>
+    <div class="hero-links">
+      <a href="#Skills" class="btn"><i class="fa-solid fa-code"></i> Skills</a>
+      <a href="#Testimony" class="btn"><i class="fa-solid fa-pen"></i> Testimony</a>
+      <a href="#Contact" class="btn"><i class="fa-solid fa-envelope"></i> Contact</a>
+    </div>
+    <div class="headshot">
+      <img src="images/hero-image.jpg" alt="Daniel's Profile" />
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="Skills" class="skills-section">
+    <h2>Skills</h2>
+    <p class="text">Technologies and tools I'm proficient with:</p>
+    <div class="skills-cells">
+      <div class="skill-cell">
+        <img src="images/HTML5_Logo_512.jpeg" alt="HTML Logo" />
+        <span>HTML</span>
+      </div>
+      <div class="skill-cell">
+        <img src="images/CSS3_logo_and_wordmark.jpeg" alt="CSS Logo" />
+        <span>CSS</span>
+      </div>
+      <div class="skill-cell">
+        <img src="images/JavaScript-Logo.jpeg" alt="JS Logo" />
+        <span>JavaScript</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimony Section -->
+  <section id="Testimony" class="testimony-section">
+    <h2>Testimony</h2>
+    <p>Coming soon...</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="Contact" class="contact-section">
+    <h2>Contact Me</h2>
+    <p>Email: danpace1999@gmail.com</p>
+  </section>
+</body>
+</html>
 </body>
 </html>
