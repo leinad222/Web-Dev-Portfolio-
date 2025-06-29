@@ -1,187 +1,54 @@
-// active hamburger menu 
-let menuIcon = document.querySelector(".menu-icon");
-let navlist = document.querySelector(".navlist")
-menuIcon.addEventListener("click",()=>{
-    menuIcon.classList.toggle("active");
-    navlist.classList.toggle("active");
-    document.body.classList.toggle("open");
-});
+function toggleDropdown() {
+          const menu = document.getElementById("dropdownMenu");
+          menu.style.display = (menu.style.display === "block") ? "none" : "block";
+      }
 
-// remove navlist
-navlist.addEventListener("click",()=>{
-    navlist.classList.remove("active");
-    menuIcon.classList.remove("active");
-    document.body.classList.remove("open");
-})
+      window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+              const dropdowns = document.getElementsByClassName("dropdown-content");
+              for (let i = 0; i < dropdowns.length; i++) {
+                  dropdowns[i].style.display = "none";
+              }
+          }
+        };
+        let slideIndex = 1;
+showSlides(slideIndex);
 
-
-
-// rotate text js code 
-let text = document.querySelector(".text p");
-
-text.innerHTML = text.innerHTML.split("").map((char,i)=>
-    `<b style="transform:rotate(${i * 6.3}deg")>${char}</b>`
-).join("");
-
-
-// switch between about buttons 
-
-const buttons = document.querySelectorAll('.about-btn button');
-const contents = document.querySelectorAll('.content');
-
-buttons.forEach((button, index) => {
-  button.addEventListener('click', () => {
-    contents.forEach(content => content.style.display = 'none');
-    contents[index].style.display = 'block';
-    buttons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-  });
-});
-
-
-
-// portfolio fillter 
-
-var mixer = mixitup('.portfolio-gallery',{
-    selectors: {
-        target: '.portfolio-box'
-    },
-    animation: {
-        duration: 500
-    }
-});
-
-
-// Initialize swiperjs 
-
-var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 1,
-    spaceBetween: 30,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    autoplay:{
-        delay:3000,
-        disableOnInteraction:false,
-    },
-
-    breakpoints: {
-        576:{
-            slidesPerView:2,
-            spaceBetween:10,
-        },
-        1200:{
-            slidesPerView:3,
-            spaceBetween:20,
-        },
-    }
-  });
-
-
-
-//   skill Progress bar 
-
-const first_skill = document.querySelector(".skill:first-child");
-const sk_counters = document.querySelectorAll(".counter span");
-const progress_bars = document.querySelectorAll(".skills svg circle");
-
-window.addEventListener("scroll",()=>{
-    if(!skillsPlayed)
-    skillsCounter();
-})
-
-
-function hasReached(el){
-    let topPosition = el.getBoundingClientRect().top;
-    if(window.innerHeight >= topPosition + el.offsetHeight)return true;
-    return false;
+function plusSlides(n) {
+  showSlides(slideIndex += n);
 }
 
-function updateCount(num,maxNum){
-    let currentNum = +num.innerText;
-    
-    if(currentNum < maxNum){
-        num.innerText = currentNum + 1;
-        setTimeout(()=>{
-            updateCount(num,maxNum)
-        },12)
-    }
+function currentSlide(n) {
+  showSlides(slideIndex = n);
 }
 
+function showSlides(n) {
+  let i;
+  const slides = document.getElementsByClassName("mySlides");
+  const dots = document.getElementsByClassName("dot");
+  const descriptions = [
+   "Backpain Relief — improve posture and reduce strain with our ergonomic desks.",
+  "Heart Health — standing reduces the risk of cardiovascular disease.",
+  "Neck Pain — proper monitor alignment can ease tension in the upper spine.",
+  "Heart Pain — stay active to avoid sedentary-related heart risks.",
+  "Relax — feel more positive and alert throughout your workday.",
+  "Boosted Productivity — stay energized and focused by working upright." 
+  ];
 
-let skillsPlayed = false;
+  if (n > slides.length) { slideIndex = 1 }
+  if (n < 1) { slideIndex = slides.length }
 
-function skillsCounter(){
-    if(!hasReached(first_skill))return;
-    skillsPlayed = true;
-    sk_counters.forEach((counter,i)=>{
-        let target = +counter.dataset.target;
-        let strokeValue = 465 - 465 * (target / 100);
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
 
-        progress_bars[i].style.setProperty("--target",strokeValue);
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
 
-        setTimeout(()=>{
-            updateCount(counter,target);
-        },400)
-    });
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
 
-    progress_bars.forEach(p => p.style.animation = "progress 2s ease-in-out forwards");
+  // Update the text block
+  document.getElementById("slide-description").innerHTML = `<p>${descriptions[slideIndex - 1]}</p>`;
 }
-
-
-// side progress bar 
-
-let calcScrollValue = ()=>{
-    let scrollProgress = document.getElementById("progress");
-    let pos = document.documentElement.scrollTop;
-
-    let calcHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    let scrollValue = Math.round((pos * 100)/calcHeight);
-    
-    if(pos > 100){
-        scrollProgress.style.display = "grid";
-    }else{
-        scrollProgress.style.display = "none";
-    }
-
-    scrollProgress.addEventListener("click",()=>{
-        document.documentElement.scrollTop = 0;
-    });
-
-    scrollProgress.style.background = `conic-gradient(#fff ${scrollValue}%,#e6006d ${scrollValue}%)`;
-};
-
-window.onscroll = calcScrollValue;
-window.onload = calcScrollValue;
-
-
-// active menu 
-
-let menuLi = document.querySelectorAll("header ul li a");
-let section = document.querySelectorAll('section');
-
-function activeMenu(){
-    let len = section.length;
-    while(--len && window.scrollY + 97 < section[len].offsetTop){}
-    menuLi.forEach(sec => sec.classList.remove("active"));
-    menuLi[len].classList.add("active");
-}
-activeMenu();
-window.addEventListener("scroll",activeMenu);
-
-// scroll reveal
-
-ScrollReveal({ 
-    distance:"90px",
-    duration:2000,
-    delay:200,
-    // reset: true ,
-});
-
-
-ScrollReveal().reveal('.hero-info,.main-text,.proposal,.heading', { origin: "top" });
-ScrollReveal().reveal('.about-img,.fillter-buttons,.contact-info', { origin: "left" });
-ScrollReveal().reveal('.about-content,.skills', { origin: "right" });
-ScrollReveal().reveal('.allServices,.portfolio-gallery,.blog-box,footer,.img-hero', { origin: "bottom" });
-
